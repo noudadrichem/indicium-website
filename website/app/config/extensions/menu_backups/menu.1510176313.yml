@@ -1,0 +1,14 @@
+main:
+    -
+        label: Home
+        path: home
+    -
+        label: Reglement
+        path: /reglement
+    -
+        label: Teams
+        path: /teams
+    -
+        label: Inschrijven
+        path: inschrijven/
+        class: nav-item-special

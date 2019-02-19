@@ -1,0 +1,33 @@
+{#
+ # Passed in variables:
+ #   fields   — Field data from the form configuration
+ #   config   — Email configuration data
+ #   data     — POSTed data
+ #   metadata — Form meta data
+ #}
+<p>Beste Indicium,</p>
+
+<p>Er is een formulier ingevuld op {{ paths.currenturl }}.</p>
+
+<p>De gegevens van het formulier vind je hieronder:</p>
+
+<hr>
+
+{% set json = data.json|json_decode %}
+
+{% for fieldname, value in json %}
+
+    {{ fieldname|capitalize }}: {{ value|capitalize }} <br>
+
+{% endfor %}
+
+<p>Overige gegevens: </p>
+{% for metafield, value in metadata %}
+
+    {{ metafield|capitalize }}: {{ value|capitalize }} <br>
+
+{% endfor %}
+
+<hr>
+
+Dit is een geautomatiseerd bericht.

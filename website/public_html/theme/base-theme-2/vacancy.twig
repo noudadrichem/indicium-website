@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="{{ paths.theme }}css/components/blocks/singlevacancy.css">
+
+{% set number = group.number %}
+
+{% setcontent vacancy = "vacancies/#{number}" returnsingle %}
+{% setcontent partner = "partners" where { 'id': vacancy.partner } returnsingle %}
+
+<div class="container block vacancy">
+    <div class="row">
+        <h1 class="vacancy-title col-xs-12 col-sm-8 col-md-9">{{ vacancy.title }} - {{ partner.name }}</h1>
+        <div class="col-xs-12 col-sm-4 col-md-3 vacancy-image">
+            <img src="{{ thumbnail(partner.logo, 200, 200, "r") }}">
+        </div>
+        <div class="col-xs-12 col-sm-7 col-md-8 vacancy">
+            <p class="vacancy-comment">{{ vacancy.longdescription }}</p>
+            <div class="vacancy-date">
+                Deze vacature is beschikbaar vanaf {{ vacancy.date|date("d/m/Y") }}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-md-4">
+            <p>
+                Wil je reageren op deze vacature? Vul het formulier hieronder dan in!
+            </p>
+            <!-- Boltform -->
+        </div>
+    </div>
+</div>

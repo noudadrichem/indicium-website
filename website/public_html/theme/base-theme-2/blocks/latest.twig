@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="{{ paths.theme }}css/components/blocks/latest.css">
+
+{% set number = group.number|replace({'\\': ""}) %}
+
+{% if number == 1 or number is empty %}
+    {% set number = 3 %}
+{% endif %}
+
+{% setcontent blog = "blog/latest/#{number}" %}
+
+<div class="container block latest-items">
+    <div class="row">
+        {% if group.title is defined %}
+        <div class="col-12 latest-items-title">
+            <h2>{{ group.title }}</h2>
+        </div>
+        {% endif %}
+        {% for blogpost in blog %}
+            <a href="blogpost/{{ blogpost.slug }}" class="col-xs-12 col-sm-6 col-lg latest-item">
+                <div class="latest-item-title">
+                    {% if group.title is defined %}
+                        <h3>{{ blogpost.title }}</h3>
+                    {% else %}
+                        <h2>{{ blogpost.title }}</h2>
+                    {% endif %}
+                </div>
+                <div class="latest-item-preview">
+                    {{ blogpost.preview }}
+                </div>
+                <div class="latest-item-date">
+                    {{ blogpost.datecreated|date("d/m/Y") }}
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="{{ paths.theme }}css/components/blocks/events.css">
+
+{% setcontent events = "events/latest/10" orderby 'start' allowpaging %}
+
+<div class="container block events">
+    <div class="row">
+        {% for event in events %}
+            <a href="evenement/{{ event.slug }}" class="col-12 event">
+                <h2 class="event-title">{{ event.title }}</h2>
+                <p class="event-preview">{{ event.preview }}</p>
+            </a>
+        {% endfor %}
+        <div class="col-12">
+            {{ pager("events") }}
+        </div>
+    </div>
+</div>

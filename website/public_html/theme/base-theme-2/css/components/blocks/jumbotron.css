@@ -1,0 +1,11 @@
+.jumbotron {
+  position: relative;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important; }
+  .jumbotron img {
+    visibility: hidden;
+    position: absolute;
+    left: -64px; }
+
+/*# sourceMappingURL=jumbotron.css.map */

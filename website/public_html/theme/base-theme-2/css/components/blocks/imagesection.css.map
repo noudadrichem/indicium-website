@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEI,uBAAK;EACH,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;EACnB,eAAe,EAAE,MAAM;EAEvB,2BAAI;IACF,SAAS,EAAE,IAAI",
+"sources": ["imagesection.scss"],
+"names": [],
+"file": "imagesection.css"
+}

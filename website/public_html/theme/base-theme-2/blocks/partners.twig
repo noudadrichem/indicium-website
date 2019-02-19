@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="{{ paths.theme }}css/components/blocks/partners.css">
+
+{% setcontent partners = "partners/random/500" allowpaging %}
+
+<div class="container block partners">
+    <div class="row">
+        <div class="col-12"><h1>{{ group.title }}</h1></div>
+        {% for partner in partners %}
+            <div class="col-12 row partner">
+                <div class="col-3 partner-logo">
+                    <img src="{{ thumbnail(partner.logo, 200, 200, "r") }}">
+                </div>
+                <div class="col-9 partner-information">
+                    <h2 class="partner-name">{{ partner.name }}</h2>
+                    <p class="partner-description">{{ partner.description }}</p>
+                    {% if partner.url is not empty %}
+                        <a class="partner-url btn btn-theme" href="{{ partner.url }}" target="_blank">
+                            Bezoek de website van {{ partner.name }}
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="col-12">
+            {{ pager("partners") }}
+        </div>
+    </div>
+</div>

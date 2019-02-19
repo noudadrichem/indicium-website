@@ -1,0 +1,42 @@
+.upcoming-events {
+  .row {
+    .upcoming-events-title {
+
+    }
+
+    a.upcoming-event {
+      &:hover {
+        text-decoration: none;
+
+        .upcoming-event-title {
+          h2, h3 {
+            color: $color-blue-lighter;
+          }
+        }
+        .upcoming-event-preview {
+          color: $color-blue-lighter;
+        }
+      }
+
+      .upcoming-event-title {
+        h2, h3 {
+          font-size: 32px;
+        }
+      }
+
+      .upcoming-event-preview {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        line-height: 24px;
+        height: calc(24px * 3);
+      }
+
+      .upcoming-event-date {
+        color: $color-grey;
+      }
+    }
+  }
+}

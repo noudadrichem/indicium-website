@@ -1,0 +1,13 @@
+main:
+    -
+        label: Home
+        path: home
+    -
+        label: Inschrijven
+        path: inschrijven/
+    -
+        label: Reglement
+        path: /reglement
+    -
+        label: Teams
+        path: /teams

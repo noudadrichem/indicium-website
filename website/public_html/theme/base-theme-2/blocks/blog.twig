@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="{{ paths.theme }}css/components/blocks/blog.css">
+
+{% setcontent blogposts = "blogposts/latest/10" allowpaging %}
+
+<div class="container block blogposts">
+    <div class="row">
+        {% for blogpost in blogposts %}
+            <a href="blogpost/{{ blogpost.slug }}" class="col-12 blogpost">
+                <h2 class="blogpost-title">{{ blogpost.title }}</h2>
+                <p class="blogpost-preview">{{ blogpost.preview }}</p>
+                <div class="blogpost-date">
+                    {{ blogpost.datecreated|date("d/m/Y") }}
+                </div>
+            </a>
+        {% endfor %}
+        <div class="col-12">
+            {{ pager("blogposts") }}
+        </div>
+    </div>
+</div>

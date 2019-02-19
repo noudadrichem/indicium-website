@@ -1,0 +1,42 @@
+.latest-items {
+  .row {
+    .latest-items-title {
+
+    }
+
+    a.latest-item {
+      &:hover {
+        text-decoration: none;
+
+        .latest-item-title {
+          h2, h3 {
+            color: $color-blue-lighter;
+          }
+        }
+        .latest-item-preview {
+          color: $color-blue-lighter;
+        }
+      }
+
+      .latest-item-title {
+        h2, h3 {
+          font-size: 32px;
+        }
+      }
+
+      .latest-item-preview {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        line-height: 24px;
+        height: calc(24px * 3);
+      }
+
+      .latest-item-date {
+        color: $color-grey;
+      }
+    }
+  }
+}

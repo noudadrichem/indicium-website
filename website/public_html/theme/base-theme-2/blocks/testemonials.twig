@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="{{ paths.theme }}css/components/blocks/testemonials.css">
+
+{% setcontent testemonials = "testemonials/latest/10" allowpaging %}
+
+<div class="container block testemonials">
+    <div class="row">
+        {% for testemonial in testemonials %}
+            <div class="col-3 testemonial-image">
+                <img src="{{ thumbnail(testemonial.image, 200, 200, "r") }}">
+            </div>
+            <div class="col-9 testemonial">
+                <h2 class="testemonial-title">{{ testemonial.name }}</h2>
+                <p class="testemonial-comment">{{ testemonial.comment }}</p>
+                <div class="testemonial-date">
+                    {{ testemonial.datecreated|date("d/m/Y") }}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="col-12">
+            {{ pager("testemonials") }}
+        </div>
+    </div>
+</div>

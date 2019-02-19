@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="{{ paths.theme }}css/components/blocks/section.css">
+
+<div class="container block section">
+    <div class="row">
+        <div class="col">
+            {% if thumbnail(group.image) == true %}
+                <img src="{{ thumbnail(group.image, 800, 800, "r") }}" {% if group.outline == "left" %} style="float:left; margin-left: 0;" {% else %} style="float:right; margin-right: 0;" {% endif %}>
+            {% endif %}
+            <div class="content">
+                {{ group.content|raw }}
+            </div>
+        </div>
+    </div>
+</div>

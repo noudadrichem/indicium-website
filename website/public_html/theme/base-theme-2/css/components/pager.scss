@@ -1,0 +1,50 @@
+@import "../import.scss";
+
+.pagination {
+  ul {
+    float: left;
+    clear: both;
+    display: block;
+    margin: 8px auto;
+    padding: 0;
+    border: 1px solid #DDD;
+    border-radius: 0;
+
+    li {
+      float: left;
+      list-style-type: none;
+      padding: 0;
+
+      color: $color-theme-blue;
+      background-color: $color-white;
+      border-width: 3px;
+      border-color: $color-theme-blue;
+      border-radius: 0;
+      font-family: $font-paragraph;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      &.active {
+        font-weight: bold;
+        color: $color-white;
+        background-color: $color-theme-blue;
+      }
+
+      a {
+        text-decoration: none;
+        width:50px;
+        height:50px;
+        padding: 10px;
+        display: block;
+        text-align: center;
+        line-height: 30px;
+        vertical-align: middle;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+    }
+  }
+}

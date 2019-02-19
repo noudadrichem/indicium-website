@@ -1,0 +1,949 @@
+# This file defines the contenttypes on the website. See the documentation for
+# details: https://docs.bolt.cm/contenttypes/intro
+
+# Pages can be used for the more 'static' pages on your site. Things like
+# 'about us', 'contact' or a 'disclaimer'. This content-type has a 'templateselect'
+# field, which allows you to override the record_template setting for an
+# individual page.
+# The taxonomy for this ContentType is defined as 'groups', which is a so-called
+# "grouping taxonomy". This way you can easily group sets of pages that logically
+# belong together. If your site has a 'services' section, in which you'd like to
+# list the different types of services a company provides, you can group these
+# together.
+
+resources:
+    name: Opbouw
+    singular_name: Opbouw
+    fields:
+        headerimage:
+            label: Afbeelding header
+            postfix: Pas hier de afbeelding van de header aan.
+            type: image
+            group: Header
+            required: true
+#        headertext:
+#            label: Tekst header
+#            postfix: Pas hier de tekst in de header aan. De spaties in de tekst worden automatisch uitgerekt zodat de regel helemaal in de breedte van de header past. De tekst is niet zichtbaar op een smartphone.
+#            type: text
+#            group: Header
+#            required: true
+        columns:
+            type: block
+            label: Kolommen
+            group: Footers
+            fields:
+                standard:
+                    label: Standaard
+                    fields:
+                        text:
+                            label: Tekst
+                            type: textarea
+                            required: true
+                        image:
+                            label: Afbeelding
+                            type: image
+                        order:
+                            label: Volgorde
+                            type: select
+                            values: {'image-first': "Afbeelding boven, tekst onder", 'text-first': "Tekst boven, afbeelding onder"}
+                            default: 'image-first'
+                            required: true
+                sitemap:
+                    label: Sitemap
+                    fields:
+                        title:
+                            label: Title
+                            type: text
+                            default: "Sitemap"
+                            postfix: De naam boven de sitemap. Mag leeggelaten worden indien dit gewenst is.
+                facebooktimeline:
+                    label: Facebook tijdlijn
+                    fields:
+                        name:
+                            label: Naam
+                            type: text
+                            placeholder: East Side to the Website
+                            postfix: De naam van de pagina, wordt getoond in een link wanneer de tijdlijn niet geladen kan worden.
+                            required: true
+                        page:
+                            label: Pagina
+                            type: text
+                            placeholder: https://www.facebook.com/EastSideToTheWebsite/
+                            postfix: Plak hier de URL van de pagina.
+                            required: true
+                        height:
+                            label: Hoogte
+                            type: integer
+                            default: 400
+                            min: 70
+                            postfix: De hoogte van de facebook tijdlijn in pixels. Dient minimaal 70 te zijn.
+                            required: true
+                        smallheader:
+                            label: Kleine header
+                            type: checkbox
+                            postfix: Maakt de header in de facebook tijdlijn kleiner
+                        hidecover:
+                            label: Verberg achtergrondfoto
+                            type: checkbox
+                        faces:
+                            label: Laat gezichten van vrienden zien
+                            type: checkbox
+                            default: true
+                            postfix: Laat de geichten van vrienden van de bezoeker zien, indien de bezoeker is ingelogd.
+                socials:
+                    label: Social media knoppen
+                    fields:
+                        facebook:
+                            label: Facebook
+                            type: text
+                            postfix: Vul in om een link naar facebook toe te voegen. Laat leeg om de link niet te tonen.
+                        linkedin:
+                            label: Linkedin
+                            type: text
+                            postfix: Vul in om een link naar LinkedIn toe te voegen. Laat leeg om de link niet te tonen.
+                        instagram:
+                            label: Instagram
+                            type: text
+                            postfix: Vul in om een link naar Instagram toe te voegen. Laat leeg om de link niet te tonen.
+                        twitter:
+                            label: Twitter
+                            type: text
+                            postfix: Vul in om een link naar Twitter toe te voegen. Laat leeg om de link niet te tonen.
+                        pinterest:
+                            label: Pinterest
+                            type: text
+                            postfix: Vul in om een link naar Pinterest toe te voegen. Laat leeg om de link niet te tonen.
+                        youtube:
+                            label: Youtube
+                            type: text
+                            postfix: Vul in om een link naar Youtube toe te voegen. Laat leeg om de link niet te tonen.ty
+#                        tumblr:
+#                        flickr:
+#                        googleplus:
+#                        snapchat:
+#                        foursquare:
+#                        fbmessenger:
+#                        json:
+#                            label: Socal media knoppen
+#                            type: textarea
+#                            postfix: Mogelijke knoppen: Facebook, LinkedIn, Twitter
+    show_on_dashboard: false
+    searchable: false
+    singleton: true
+    icon_many: "fa:cubes"
+    icon_one: "fa:cubes"
+
+
+pages:
+    name: Pagina's
+    singular_name: Pagina
+    fields:
+        title:
+            type: text
+            class: large
+            group: Basis
+            required: true
+        slug:
+            label: URL
+            type: slug
+            uses: title
+            group: Basis
+            required: true
+        keywords:
+            label: SEO Sleutelwoorden
+            type: text
+            group: Basis
+            postfix: "Vul hier de sleutelwoorden van de pagina in (dus niet van de website zelf, tenzij het om de homepagina gaat), gescheiden door een komma. Dit helpt zoekmachines om een beeld te krijgen van waar de website over gaat."
+            required: true
+        description:
+            label: SEO Omschrijving
+            type: textarea
+            group: Basis
+            postfix: "Dit stuk tekst wordt gebruikt als omschrijving in de Google zoekresultaten. Google gebruikt dit zelf nauwelijks om waarde van je site in te schatten, het is dus vooral bedoeld om gebruikers die dit stukje lezen binnen te halen."
+            required: true
+        contentblocks:
+            type: block
+            label: Contentblokken
+            group: Content
+            fields:
+                section:
+                    label: Standaard sectie
+                    fields:
+                        content:
+                            type: html
+                            required: true
+                        image:
+                            type: image
+                        outline:
+                            type: select
+                            label: Positie afbeelding op groot scherm
+                            values: { 'right': "Rechts", 'left': "Links" }
+                            default: right
+                            required: true
+                            postfix: Indien er een afbeelding is meegegeven, bepaald dit veld of deze links of rechts van de tekst komt te staan. Mag genegeerd worden wanneer er geen afbeelding geselecteerd is.
+                imagesection:
+                    label: Afbeelding
+                    fields:
+                        image:
+                            type: image
+                            required: true
+                jumboimage:
+                    label: Brede afbeelding
+                    fields:
+                        image:
+                            type: image
+                            required: true
+                        height:
+                            label: Hoogte
+                            type: integer
+                            postfix: Definieer hier hoeveel procent van de hoogte van het scherm de afbeelding moet beslaan. Indien de waarde 0 is wordt de hoogte automatisch berekend.
+                            required: true
+                jumbotron:
+                    label: Jumbotron
+                    fields:
+                        title:
+                            label: Titel
+                            information: Dit is de titel
+                            type: text
+                            required: true
+                        lead:
+                            label: Lead
+                            information: Dit is de lead
+                            type: html
+                        content:
+                            label: Inhoud
+                            information: Dit is de inhoud
+                            type: html
+                        button:
+                            label: Knop
+                            information: Dit is de knop
+                            type: text
+                        buttonlink:
+                            label: Link
+                            information: Dit is de link van de knop
+                            type: text
+                        image:
+                            type: image
+                            information: Voeg optioneel een afbeelding toe.
+                        height:
+                            label: Hoogte
+                            type: integer
+                            postfix: Definieer hier hoeveel procent van de hoogte van het scherm de jumbotron moet beslaan. Indien de waarde 0 is wordt de hoogte automatisch berekend.
+                        opacity:
+                            label: Doorzichtigheid
+                            type: integer
+                            min: 0
+                            max: 100
+                            postfix: Definieer hier hoe doorzichtig de achtergrondafbeelding moet zijn in procenten. 0% is niet doorzichtig, 100% is helemaal doorzichtig.
+                            required: true
+                            default: 30
+                columns:
+                    label: Kolommen
+                    fields:
+                        column1:
+                            label: Kolom 1
+                            type: html
+                        column2:
+                            label: Kolom 2
+                            type: html
+                        column3:
+                            label: Kolom 3
+                            type: html
+                        column4:
+                            label: Kolom 4
+                            type: html
+                calendar:
+                    label: Kalender
+                    fields:
+                        title:
+                            label: Titel
+                            type: text
+                video:
+                    label: Video
+                    fields:
+                        url:
+                            label: URL
+                            type: text
+                            placeholder: https://www.youtube.com/watch?v=XyNlqQId-nk
+                            postfix: Kopieer en plak hier de URL van een youtube video.
+                            required: true
+                showcase:
+                    label: Showcase
+                    fields:
+                        title:
+                            label: Titel
+                            type: text
+                            default: "Showcase"
+                            required: true
+                blog:
+                    label: Blog
+                    fields:
+                        title:
+                            label: Titel
+                            default: Blog
+                            type: text
+                events:
+                    label: Evenementen
+                    fields:
+                        title:
+                            label: Titel
+                            default: Evenementen
+                            type: text
+                form:
+                    label: Formulier
+                    fields:
+                        formentry:
+                            label: Formulier
+                            type: select
+                            values: forms/title
+                            required: true
+                latest:
+                    label: Recente blogposts
+                    fields:
+                        title:
+                            label: Titel
+                            type: text
+                            placeholder: "Titel"
+                            postfix: "Optioneel om toe te voegen. Wanneer ingevuld voegt dit een &lt;h2&gt;-subtitel toe en maakt het de titels boven de blogpost zijn &lt;h3&gt;-subtitels."
+                        number:
+                            label: Aantal
+                            type: select
+                            values: { '\2': "2", '\3': "3", '\4': "4" }
+                            default: "3"
+                            postfix: "Geef hier aan hoeveel recente blogposts er getoond moeten worden. "
+                            required: true
+                upcoming:
+                    label: Aankomende evenementen
+                    fields:
+                        title:
+                            label: Titel
+                            type: text
+                            placeholder: "Titel"
+                            postfix: "Optioneel om toe te voegen. Wanneer ingevuld voegt dit een &lt;h2&gt;-subtitel toe en maakt het de titels boven het evenement zijn &lt;h3&gt;-subtitels."
+                        number:
+                            label: Aantal
+                            type: select
+                            values: { '\2': "2", '\3': "3", '\4': "4" }
+                            default: "3"
+                            postfix: "Geef hier aan hoeveel aankomende evenementen er getoond moeten worden. "
+                            required: true
+                accordeon:
+                    label: Accordeon
+                    fields:
+                        title:
+                            label: Titel
+                            type: text
+                            required: true
+                        content:
+                            label: Content
+                            type: html
+                            required: true
+                        open:
+                            label: Geopend
+                            type: checkbox
+                            postfix: Geeft aan of dit onderdeel van de accordeon al geopend dient te zijn.
+                partners:
+                    label: Partners
+                    fields:
+                        title:
+                            label: Titel
+                            type: text
+                            postfix: "Je kan hier eventueel een titel invullen die boven de partnerlijst wordt getoond. "
+                            required: false
+                vacancies:
+                    label: Vacaturebank
+                    fields:
+                        title:
+                            label: Titel
+                            type: text
+                            postfix: "Je kan hier eventueel een titel invullen die boven de partnerlijst wordt getoond. "
+                            required: false
+                raw:
+                    label: Vrije code
+                    fields:
+                        code:
+                            label: Code
+                            type: textarea
+                            required: true
+    icon_many: "fa:file-text-o"
+    icon_one: "fa:file-text-o"
+
+#                map:
+#                    label: Kaart
+#                    fields:
+#                        shapes:
+#                            type: geojson
+#                            map:
+#                                zoom: 13         # Initial zoom level for the default backend map (0 for all earth, 23 for house details)
+#                                max_zoom: 18     # Max detailed zoom level for the backend map
+#                                height: 300px    # Height for the backend map
+#                                lat: 48.856578   # Center latitude for the default backend map
+#                                long: 2.351828   # Center longitude for the default backend map
+#                                osm_url: 'https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png'
+#                                osm_cont: 'donn&eacute;es &copy; <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>'
+#                            draw:
+#                                polyline: true   # Defined if user could draw polylines
+#                                polygon: true    # Defined if user could draw polygons
+#                                marker: true     # Defined if user could draw markers
+#                                circle: false    # Defined if user could draw circles
+#                                rectangle: false # Defined if user could draw rectangles
+#                                remove: true     # Defined if user could remove shapes
+#                                style: false     # not implemented yet
+
+blogposts:
+    name: Blog
+    singular_name: Blogpost
+    fields:
+        title:
+            type: text
+            label: Titel
+            group: Algemeen
+            required: true
+        slug:
+            type: slug
+            uses: title
+            label: URL
+            group: Algemeen
+            required: true
+        preview:
+            type: textarea
+            label: Preview
+            group: Algemeen
+            postfix: Kort stukje tekst dat bedoeld is om iets over de blogpost te vertellen. Er worden maximaal drie regels tekst getoond, het is dus verstandig om het kort te houden.
+            required: true
+        contentblocks:
+            type: block
+            label: Contentblokken
+            group: Content
+            fields:
+                section:
+                    label: Standaard sectie
+                    fields:
+                        content:
+                            type: html
+                            required: true
+                        image:
+                            type: image
+                        outline:
+                            type: select
+                            label: Positie afbeelding op groot scherm
+                            values: { 'right': "Rechts", 'left': "Links" }
+                            default: right
+                            required: true
+                imagesection:
+                    label: Afbeelding
+                    fields:
+                        image:
+                            type: image
+                            required: true
+                jumboimage:
+                    label: Brede afbeelding
+                    fields:
+                        image:
+                            type: image
+                            required: true
+                        height:
+                            label: Hoogte
+                            type: integer
+                            postfix: Definieer hier hoeveel procent van de hoogte van het scherm de afbeelding moet beslaan. Indien de waarde 0 is wordt de hoogte automatisch berekend.
+                            required: true
+                jumbotron:
+                    label: Jumbotron
+                    fields:
+                        title:
+                            label: Titel
+                            information: Dit is de titel
+                            type: text
+                            required: true
+                        lead:
+                            label: Lead
+                            information: Dit is de lead
+                            type: html
+                        content:
+                            label: Inhoud
+                            information: Dit is de inhoud
+                            type: html
+                        button:
+                            label: Knop
+                            information: Dit is de knop
+                            type: text
+                        buttonlink:
+                            label: Link
+                            information: Dit is de link van de knop
+                            type: text
+                        image:
+                            type: image
+                            information: Voeg optioneel een afbeelding toe.
+                        height:
+                            label: Hoogte
+                            type: integer
+                            postfix: Definieer hier hoeveel procent van de hoogte van het scherm de jumbotron moet beslaan. Indien de waarde 0 is wordt de hoogte automatisch berekend.
+                video:
+                    label: Video
+                    fields:
+                        url:
+                            label: URL
+                            type: text
+                            placeholder: https://www.youtube.com/watch?v=XyNlqQId-nk
+                            postfix: Kopieer en plak hier de URL van een youtube video.
+                            required: true
+                form:
+                    label: Formulier
+                    fields:
+                        formentry:
+                            label: Formulier
+                            type: select
+                            values: forms/title
+                            required: true
+                latest:
+                    label: Recenten
+                    fields:
+                        title:
+                            label: Titel
+                            type: text
+                            placeholder: "Titel"
+                            postfix: "Optioneel om toe te voegen. Wanneer ingevuld voegt dit een &lt;h2&gt;-subtitel toe en maakt het de titels boven de blogpost zijn &lt;h3&gt;-subtitels."
+                        number:
+                            label: Aantal
+                            type: select
+                            values: { '\2': "2", '\3': "3", '\4': "4" }
+                            default: "3"
+                            postfix: "Geef hier aan hoeveel blogposts er getoond moeten worden. "
+                            required: true
+                upcoming:
+                    label: Aankomenden
+                    fields:
+                        title:
+                            label: Titel
+                            type: text
+                            placeholder: "Titel"
+                            postfix: "Optioneel om toe te voegen. Wanneer ingevuld voegt dit een &lt;h2&gt;-subtitel toe en maakt het de titels boven het evenement zijn &lt;h3&gt;-subtitels."
+                        number:
+                            label: Aantal
+                            type: select
+                            values: { '\2': "2", '\3': "3", '\4': "4" }
+                            default: "3"
+                            postfix: "Geef hier aan hoeveel evenementen er getoond moeten worden. "
+                            required: true
+                accordeon:
+                    label: Accordeon
+                    fields:
+                        title:
+                            label: Titel
+                            type: text
+                            required: true
+                        content:
+                            label: Content
+                            type: html
+                            required: true
+                        open:
+                            label: Geopend
+                            type: checkbox
+                            postfix: Geeft aan of dit onderdeel van de accordeon al geopend dient te zijn.
+    icon_many: "fa:pencil"
+    icon_one: "fa:pencil"
+
+
+events:
+    name: Evenementen
+    singular_name: Evenement
+    fields:
+        title:
+            type: text
+            label: Titel
+            group: Algemeen
+            required: true
+        slug:
+            type: slug
+            uses: title
+            label: URL
+            group: Algemeen
+            required: true
+        start:
+            label: Startdatum en -tijd
+            type: datetime
+            group: Algemeen
+            postfix: "De begindatum en -tijd van het evenement."
+            required: true
+        end:
+            label: Einddatum en -tijd
+            type: datetime
+            group: Algemeen
+            postfix: "De einddatum en -tijd van het evenement."
+        contentblocks:
+            type: block
+            label: Contentblokken
+            group: Content
+            fields:
+                section:
+                    label: Standaard sectie
+                    fields:
+                        content:
+                            type: html
+                            required: true
+                        image:
+                            type: image
+                        outline:
+                            type: select
+                            label: Positie afbeelding op groot scherm
+                            values: { 'right': "Rechts", 'left': "Links" }
+                            default: right
+                            required: true
+                imagesection:
+                    label: Afbeelding
+                    fields:
+                        image:
+                            type: image
+                            required: true
+                jumboimage:
+                    label: Brede afbeelding
+                    fields:
+                        image:
+                            type: image
+                            required: true
+                        height:
+                            label: Hoogte
+                            type: integer
+                            postfix: Definieer hier hoeveel procent van de hoogte van het scherm de afbeelding moet beslaan. Indien de waarde 0 is wordt de hoogte automatisch berekend.
+                            required: true
+                jumbotron:
+                    label: Jumbotron
+                    fields:
+                        title:
+                            label: Titel
+                            information: Dit is de titel
+                            type: text
+                            required: true
+                        lead:
+                            label: Lead
+                            information: Dit is de lead
+                            type: html
+                        content:
+                            label: Inhoud
+                            information: Dit is de inhoud
+                            type: html
+                        button:
+                            label: Knop
+                            information: Dit is de knop
+                            type: text
+                        buttonlink:
+                            label: Link
+                            information: Dit is de link van de knop
+                            type: text
+                        image:
+                            type: image
+                            information: Voeg optioneel een afbeelding toe.
+                        height:
+                            label: Hoogte
+                            type: integer
+                            postfix: Definieer hier hoeveel procent van de hoogte van het scherm de jumbotron moet beslaan. Indien de waarde 0 is wordt de hoogte automatisch berekend.
+                video:
+                    label: Video
+                    fields:
+                        url:
+                            label: URL
+                            type: text
+                            placeholder: https://www.youtube.com/watch?v=XyNlqQId-nk
+                            postfix: Kopieer en plak hier de URL van een youtube video.
+                            required: true
+                form:
+                    label: Formulier
+                    fields:
+                        formentry:
+                            label: Formulier
+                            type: select
+                            values: forms/title
+                            required: true
+                latest:
+                    label: Recenten
+                    fields:
+                        title:
+                            label: Titel
+                            type: text
+                            placeholder: "Titel"
+                            postfix: "Optioneel om toe te voegen. Wanneer ingevuld voegt dit een &lt;h2&gt;-subtitel toe en maakt het de titels boven de blogpost zijn &lt;h3&gt;-subtitels."
+                        number:
+                            label: Aantal
+                            type: select
+                            values: { '\2': "2", '\3': "3", '\4': "4" }
+                            default: "3"
+                            postfix: "Geef hier aan hoeveel blogposts er getoond moeten worden. "
+                            required: true
+                upcoming:
+                    label: Aankomenden
+                    fields:
+                        title:
+                            label: Titel
+                            type: text
+                            placeholder: "Titel"
+                            postfix: "Optioneel om toe te voegen. Wanneer ingevuld voegt dit een &lt;h2&gt;-subtitel toe en maakt het de titels boven het evenement zijn &lt;h3&gt;-subtitels."
+                        number:
+                            label: Aantal
+                            type: select
+                            values: { '\2': "2", '\3': "3", '\4': "4" }
+                            default: "3"
+                            postfix: "Geef hier aan hoeveel evenementen er getoond moeten worden. "
+                            required: true
+                accordeon:
+                    label: Accordeon
+                    fields:
+                        title:
+                            label: Titel
+                            type: text
+                            required: true
+                        content:
+                            label: Content
+                            type: html
+                            required: true
+                        open:
+                            label: Geopend
+                            type: checkbox
+                            postfix: Geeft aan of dit onderdeel van de accordeon al geopend dient te zijn.
+    icon_many: "fa:calendar"
+    icon_one: "fa:calendar"
+
+
+partners:
+    name: Partners
+    singular_name: Partner
+    fields:
+        name:
+            type: text
+            label: Naam partner
+            group: Algemeen
+            required: true
+        logo:
+            type: image
+            label: Logo partner
+            group: Algemeen
+            required: true
+        description:
+            type: textarea
+            label: Omschrijving partner
+            group: Algemeen
+            required: true
+        url:
+            type: text
+            label: Website partner
+            group: Algemeen
+            required: false
+    icon_many: "fa:address-book"
+    icon_one: "fa:address-book"
+
+
+vacancies:
+    name: Vacatures
+    singular_name: Vacature
+    fields:
+        title:
+            type: text
+            label: Titel
+            group: Algemeen
+            required: true
+        slug:
+            type: slug
+            uses: title
+            label: URL
+            group: Algemeen
+            required: true
+        shortdescription:
+            type: textarea
+            label: Korte omschrijving vacature
+            group: Algemeen
+            required: false
+        longdescription:
+            type: html
+            label: Uitgebreide omschrijving vacature
+            group: Algemeen
+            required: true
+        date:
+            type: date
+            label: Beschikbaar vanaf
+            group: Algemeen
+        email:
+            type: text
+            label: E-mail
+            group: Contact
+            required: false
+        phone:
+            type: text
+            label: Telefoonnummer
+            group: Contact
+            required: false
+        address:
+            type: text
+            label: Adres
+            group: Contact
+            required: false
+        partner:
+            type: select
+            values: partners/name
+            group: Algemeen
+            required: true
+    icon_many: "fa:address-book"
+    icon_one: "fa:address-book"
+
+
+forms:
+    name: Formulieren
+    singular_name: Formulier
+    fields:
+        title:
+            label: Titel
+            type: text
+            postfix: De titel van het formulier. Wordt niet op de website getoond.
+            group: Algemeen
+            required: true
+        thankyou:
+            label: Dankjewel-pagina
+            type: select
+            values: pages/title
+            postfix: Een dankjewel-pagina krijgt de gebruiker te zien nadat het formulier is ingevuld. Het is belangrijk om deze te hebben omdat er met deze pagina binnen Google Analytics getest kan worden hoe vaak een formulier is ingevuld. Het is ook verstandig om per formulier een aparte dankjewel-pagina te hebben.
+            required: true
+        formfields:
+            type: block
+            label: Invoervelden
+            group: Invoervelden
+            fields:
+                text:
+                    label: Tekstveld
+                    fields:
+                        label:
+                            label: Label
+                            type: text
+                            required: true
+                        placeholder:
+                            label: Voorbeeldtekst
+                            type: text
+                        value:
+                            label: Standaardwaarde
+                            type: text
+                        subtext:
+                            label: Subtekst
+                            type: text
+                            postfix: Een stukje tekst onder het invoerveld, zoals het stukje dat je nu leest.
+                email:
+                    label: E-mailadres
+                    fields:
+                        label:
+                            label: Label
+                            type: text
+                            required: true
+                        placeholder:
+                            label: Voorbeeldtekst
+                            type: text
+                        value:
+                            label: Standaardwaarde
+                            type: text
+                        subtext:
+                            label: Subtekst
+                            type: text
+                            postfix: Een stukje tekst onder het invoerveld, zoals het stukje dat je nu leest.
+                hidden:
+                    label: Verborgen tekstveld
+                    fields:
+                        label:
+                            label: Label
+                            type: text
+                            required: true
+                        value:
+                            label: Standaardwaarde
+                            type: text
+                textarea:
+                    label: Tekstveld
+                    fields:
+                        label:
+                            label: Label
+                            type: text
+                            required: true
+                        placeholder:
+                            label: Voorbeeldtekst
+                            type: textarea
+                        value:
+                            label: Standaardwaarde
+                            type: textarea
+                        subtext:
+                            label: Subtekst
+                            type: text
+                            postfix: Een stukje tekst onder het invoerveld, zoals het stukje dat je nu leest.
+                radio:
+                    label: Radioknoppen
+                    fields:
+                        title:
+                            label: Titel
+                            type: text
+                            placeholder: Een enkele waarde
+                            postfix: Vul hier optioneel de overkoepelende titel van de knoppen in.
+                        buttons:
+                            label: Knoppen
+                            type: text
+                            placeholder: knop1; knop2; knop3;
+                            postfix: Vul de namen van de verschillende knoppen in gescheiden door een puntkomma.
+                            required: true
+                        default:
+                            label: Aangevinkt
+                            type: text
+                            placeholder: knop3
+                            postfix: Vul hier de naam van de standaard geselecteerde knop in. Laat deze leeg als er geen een knop van te voren geselecteerd dient te zijn.
+                        subtext:
+                            label: Subtekst
+                            type: text
+                            postfix: Een stukje tekst onder de radioknoppen, zoals het stukje dat je nu leest.
+                check:
+                    label: Vinkje
+                    fields:
+                        label:
+                            label: Naam
+                            type: text
+                            placeholder: Vinkje1
+                            required: true
+                        default:
+                            label: Aangevinkt
+                            type: checkbox
+                            postfix: Kies deze optie als het vinkje in het formulier standaard al aangevinkt dient te zijn.
+                        subtext:
+                            label: Subtekst
+                            type: text
+                            postfix: Een stukje tekst onder het vinkje, zoals het stukje dat je nu leest.
+    default_status: published
+    viewless: true
+    icon_many: "fa:wpforms"
+    icon_one: "fa:wpforms"
+
+#testemonials:
+#    name: Recensies
+#    singular_name: Recensie
+#    fields:
+#        name:
+#            type: text
+#            label: Naam
+#            postfix: "De naam van degene die de recensie heeft geschreven."
+#            group: Algemeen
+#        comment:
+#            type: textarea
+#            label: Recensie
+#            postfix: "De recensie zelf. Zorg ervoor dat dit niet te lang wordt, anders neemt het teveel ruimte in op je pagina's."
+#            group: Algemeen
+#        image:
+#            type: image
+#            label: Foto
+#            postfix: "Eventueel een afbeelding van degene die de recensie heeft geschreven."
+#            group: Algemeen
+#    icon_many: "fa:address-book-o"
+#    icon_one: "fa:address-book-o"
+
+entries:
+    name: Ingevulde formulieren
+    singular_name: Ingevuld formulier
+    fields:
+        json:
+            type: textarea
+            label: Gegevens
+            required: true
+    icon_many: "fa:envelope-o"
+    icon_one: "fa:envelope-o"
+    show_on_dashboard: false
+    viewless: true
+
+
+

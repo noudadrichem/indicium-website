@@ -1,0 +1,60 @@
+{% setcontent resource = "resources/latest/1" returnsingle %}
+
+<footer>
+    <div class="main-footer">
+        <div class="container">
+            <div class="row">
+                {% for column in resource.columns %}
+                    <div class="footer-col col-xs-12 col-sm">
+                        {% if column.block == "standard" %}
+                            {% if column.order == "image-first" %}
+                                <img src="{{ thumbnail(column.image, 300, 200, "r") }}" class="footer-img">
+                                <p>{{ column.text }}</p>
+                            {% elseif column.order == "text-first" %}
+                                <p>{{ column.text }}</p>
+                                <img src="{{ thumbnail(column.image, 300, 200, "r") }}" class="footer-img">
+                            {% endif %}
+                        {% elseif column.block == "sitemap" %}
+                            <div class="footer-menu">
+                                {{ menu('footer', 'components/menus/footer.twig') }}
+                            </div>
+                        {% elseif column.block == "facebooktimeline" %}
+
+                            <div class="fb-page" data-href="{{ column.page }}" data-tabs="timeline" data-height="{{ column.height }}" data-small-header="{{ column.smallheader }}" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="{{ column.faces }}"><blockquote cite="{{ column.page }}" class="fb-xfbml-parse-ignore"><a href="{{ column.page }}">{{ column.name }}</a></blockquote></div>
+
+                        {% elseif column.block == "socials" %}
+                            {% if column.facebook is defined and column.facebook is not empty %}
+                                <a href="{{ column.facebook }}" class="footer-social facebook" target="_blank"><i class="fab social-icon fa-facebook-f"></i> <span class="social-text">Facebook</span></a>
+                            {% endif %}
+
+                            {% if column.twitter is defined and column.twitter is not empty %}
+                                <a href="{{ column.twitter }}" class="footer-social twitter" target="_blank"><i class="fab social-icon fa-twitter"></i> <span class="social-text">Twitter</span></a>
+                            {% endif %}
+
+                            {% if column.linkedin is defined and column.linkedin is not empty %}
+                                <a href="{{ column.linkedin }}" class="footer-social linkedin" target="_blank"><i class="fab social-icon fa-linkedin-in"></i> <span class="social-text">LinkedIn</span></a>
+                            {% endif %}
+
+                            {% if column.instagram is defined and column.instagram is not empty %}
+                                <a href="{{ column.instagram }}" class="footer-social instagram" target="_blank"><i class="fab social-icon fa-instagram"></i> <span class="social-text">Instagram</span></a>
+                            {% endif %}
+
+                            {% if column.pinterest is defined and column.pinterest is not empty %}
+                                <a href="{{ column.pinterest }}" class="footer-social pinterest" target="_blank"><i class="fab social-icon fa-pinterest"></i> <span class="social-text">Pinterest</span></a>
+                            {% endif %}
+
+                            {% if column.youtube is defined and column.youtube is not empty %}
+                                <a href="{{ column.youtube }}" class="footer-social youtube" target="_blank"><i class="fab social-icon fa-youtube"></i> <span class="social-text">Youtube</span></a>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="sub-footer">
+        <div class="container">
+            Webdesign door <a href="#">de webocommissie van Studievereniging Indicium</a>
+        </div>
+    </div>
+</footer>

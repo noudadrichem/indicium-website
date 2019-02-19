@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="{{ paths.theme }}css/components/blocks/accordeon.css">
+
+<div class="container block accordeon">
+    <div class="row">
+        <div class="col-12 accordeon-item">
+            <a class="accordeon-title" data-toggle="collapse" href="#{{ group.title|replace(' ', '-')|lower }}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                {{ group.title }}
+            </a>
+            <div class="accordeon-content collapse {% if group.open is defined and group.open %}show{% endif %}" id="{{ group.title|replace(' ', '-')|lower }}">
+                {{ group.content|raw }}
+            </div>
+        </div>
+    </div>
+</div>

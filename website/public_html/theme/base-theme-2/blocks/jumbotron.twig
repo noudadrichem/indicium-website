@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="{{ paths.theme }}css/components/blocks/jumbotron.css">
+
+<div class="block jumbotron" style="{% if group.height is not empty and group.height != "" %} min-height: {{ group.height }}vh; {% endif %} background: linear-gradient(rgba(255, 255, 255, {{ (group.opacity / 100)|number_format(2, '.', ',') }}), rgba(255, 255, 255, {{ (group.opacity / 100)|number_format(2, '.', ',') }})), url('{{ thumbnail(group.image, 1920, 1080, "r") }}');">
+    <div class="container">
+        {% if group.title is not empty %}
+            <div class="h1">{{ group.title }}</div>
+        {% endif %}
+
+        {% if group.lead is not empty %}
+            {{ group.lead|raw }}
+        {% endif %}
+
+        {% if group.lead is not empty and group.content is not empty %}
+            <hr class="my-4">
+        {% endif %}
+
+        {% if group.content is not empty %}
+            {{ group.content|raw }}
+        {% endif %}
+
+        {% if group.buttonlink is not empty %}
+            <p class="lead">
+                <a class="btn btn-theme" href="{{ group.buttonlink }}" role="button">{% if group.button is not empty %}{{ group.button }}{% else %}{{ group.buttonlink }}{% endif %}</a>
+            </p>
+        {% endif %}
+    </div>
+</div>

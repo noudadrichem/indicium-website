@@ -1,0 +1,22 @@
+.block.accordeon {
+  margin-bottom: 10px;
+
+  .row {
+    .accordeon-item {
+      .accordeon-title {
+        display: block;
+        width: 100%;
+        border-bottom: 3px solid $color-blue-lightest;
+        box-sizing: border-box;
+        font-size: 28px!important;
+
+        &:focus {
+          color: $color-link-default;
+        }
+      }
+      .accordeon-content {
+        overflow: auto;
+      }
+    }
+  }
+}

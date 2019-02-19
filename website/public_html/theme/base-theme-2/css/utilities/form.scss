@@ -1,0 +1,171 @@
+@import "../import.scss";
+
+.btn-theme {
+  @extend .btn-primary;
+  color: $color-button-text-default;
+  background-color: $color-button-background-default;
+  border-color: $color-button-border;
+  border-radius: 0;
+  font-family: $font-secondary;
+  transition: 0.1s;
+
+  &:hover {
+    @extend .btn-primary:hover;
+    color: $color-button-text-hover;
+    background-color: $color-button-background-hover;
+    border-color: $color-button-border;
+  }
+  &:active {
+    @extend .btn-primary:active;
+    color: $color-button-text-hover;
+    background-color: $color-button-background-active;
+    border-color: $color-button-border;
+  }
+  &:focus {
+    @extend .btn-primary:focus;
+    color: $color-button-text-focus;
+    background-color: $color-button-background-focus;
+    border-color: $color-button-border;
+  }
+}
+a.btn-theme {
+  @extend .btn-primary;
+  color: $color-button-text-default;
+  background-color: $color-button-background-default;
+  border: none;
+  border-radius: 0;
+
+  &:visited {
+    color: $color-button-text-default;
+    background-color: $color-button-background-default;
+    border-color: $color-button-border;
+  }
+  &:hover {
+    @extend .btn-primary:hover;
+    color: $color-button-text-hover;
+    background-color: $color-button-background-hover;
+    border-color: $color-button-border;
+  }
+  &:active {
+    @extend .btn-primary:active;
+    color: $color-button-text-hover;
+    background-color: $color-button-background-active;
+    border-color: $color-button-border;
+  }
+  &:focus {
+    @extend .btn-primary:focus;
+    color: $color-button-text-hover;
+    background-color: $color-button-background-focus;
+    border-color: $color-button-border;
+  }
+}
+
+.btn-outline-theme {
+  @extend .btn-outline-primary;
+  color: $color-theme-blue;
+  background-color: $color-white;
+  border-color: $color-button-border;
+  border-radius: 0;
+  font-family: $font-secondary;
+
+  &:hover {
+    @extend .btn-outline-primary:hover;
+    color: $color-white;
+    background-color: $color-theme-aqua;
+    border-color: $color-button-border;
+  }
+  &:active {
+    @extend .btn-outline-primary:active;
+    color: $color-white;
+    background-color: $color-theme-green;
+    border-color: $color-theme-green;
+  }
+  &:focus {
+    @extend .btn-outline-primary:focus;
+    color: $color-white;
+    background-color: $color-theme-aqua;
+    border-color: $color-button-border;
+  }
+}
+
+.btn-theme:disabled, .btn-disabled {
+  background-color: $color-theme-blue;
+  border-color: $color-theme-blue;
+
+  &:hover {
+    background-color: $color-theme-blue;
+    color: $color-white;
+  }
+}
+
+.btn-lg {
+  font-size: 32px!important;
+}
+
+.tooltip {
+  .tooltip-inner {
+    border-radius: 0;
+    box-shadow: 3px 3px $color-shadow;
+  }
+}
+
+.form-control:focus {
+  border-color: $color-theme-aqua;
+}
+
+// Form elements
+
+.form-check-input {
+  margin-left: 0;
+}
+
+textarea.form-control {
+  min-height: 66px;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+select.form-control {
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+input.form-control {
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+
+.form-item-hidden {
+  display: none;
+}
+
+.input-group-theme {
+  .input-group-addon {
+    border-radius: 0;
+    background-color: $color-theme-blue;
+    border-color: $color-theme-green;
+    font-family: $font-secondary;
+    color: white;
+    min-width: 43px;
+    text-align: center;
+    display: block;
+  }
+}
+
+.dropdown-toggle {
+  @extend .btn-theme;
+  border-radius: 0;
+}
+.dropdown-theme {
+  border-radius: 0;
+  border-color: $color-theme-blue;
+  font-family: $font-secondary;
+
+  .dropdown-item {
+    &:hover {
+      background-color: $color-theme-aqua;
+      color: white;
+    }
+  }
+  .dropdown-divider {
+    border-color: $color-theme-blue;
+  }
+}

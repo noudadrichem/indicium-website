@@ -1,0 +1,30 @@
+//Tool for finding unintended overflow outside of viewport
+//* {
+//  background: #000 !important;
+//  color: #0f0 !important;
+//  outline: solid #f00 1px !important;
+//}
+
+@import "import.scss";
+
+body {
+  min-height: 100vh;
+  background-color: $color-white!important;
+
+  .pagewrapper {
+    flex: 1;
+  }
+}
+
+.block {
+  //flex: 1; // removed because it broke when having multiple .block elements stacked on top...
+  margin-bottom: 30px;
+}
+
+.big-screen-top {
+  height: calc(100vh - #{$header-height});
+  background-image: url("image-computer.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}

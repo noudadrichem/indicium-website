@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="{{ paths.theme }}css/components/blocks/singletestemonial.css">
+
+{% set number = group.number %}
+
+{% setcontent testemonial = "testemonials/#{number}" %}
+
+<div class="container block testemonial">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-3 testemonial-image">
+            <img src="{{ thumbnail(testemonial.image, 200, 200, "r") }}">
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-9 testemonial">
+            <h3 class="testemonial-title">{{ testemonial.name }}</h3>
+            <p class="testemonial-comment">{{ testemonial.comment }}</p>
+            <div class="testemonial-date">
+                {{ testemonial.datecreated|date("d/m/Y") }}
+            </div>
+        </div>
+    </div>
+</div>

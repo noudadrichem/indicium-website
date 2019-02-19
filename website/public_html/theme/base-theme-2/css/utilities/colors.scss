@@ -1,0 +1,91 @@
+// Standard colors
+$color-white: rgba(255, 255, 255, 1);
+$color-white-broken: rgba(245, 245, 245, 1);
+$color-grey-light: rgba(221, 221, 221, 1);
+$color-grey: rgba(153, 153, 153, 1);
+$color-grey-dark: rgb(60, 60, 60);
+$color-black: rgba(34, 34, 34, 1);
+$color-black-darker: rgba(17, 17, 17, 1);
+
+$color-shadow: rgba(22, 22, 22, 0.5);
+
+//// - Blue theme colors
+//$color-blue-lightest: rgba(137, 153, 202, 1);
+//$color-blue-lighter: rgba(87, 138, 206, 1);
+//$color-blue-regular: rgba(54, 75, 143, 1);
+//$color-blue-darker: rgba(28, 26, 75, 1);
+//$color-blue-darkest: rgba(0, 0, 80, 1);
+//
+//// - Purple theme colors
+//$color-purple-lightest: rgba(245, 217, 255, 1);
+//$color-purple-lighter: rgba(207, 166, 255, 1);
+//$color-purple-regular: rgba(158, 99, 255, 1);
+//$color-purple-darker: rgba(48, 0, 197, 1);
+
+// - Theme colors
+
+$color-theme-blue: rgba(115,201,225, 1);
+$color-theme-aqua: rgba(140,205,195, 1);
+$color-theme-green: rgba(163,207,155, 1);
+
+// - Orange theme colors
+//$color-orange-lightest: rgb(255, 220, 156);
+//$color-orange-lighter: rgb(255, 178, 76);
+//$color-orange-regular: rgb(255, 146, 0);
+//$color-orange-darker: rgb(203, 112, 0);
+//$color-orange-darkest: rgb(139, 76, 0);
+
+// - Theme colors
+//$color-theme-1: rgba(140, 60, 146, 1);
+//$color-theme-2: rgba(124, 77, 153, 1);
+//$color-theme-3: rgba(120, 82, 156, 1);
+//$color-theme-4: rgba(89, 88, 161, 1);
+//$color-theme-5: rgba(92, 98, 169, 1);
+//$color-theme-6: rgba(73, 128, 193, 1);
+//$color-theme-7: rgba(55, 142, 193, 1);
+//$color-theme-8: rgba(42, 163, 199, 1);
+//$color-theme-9: rgba(23, 181, 202, 1);
+
+// Website component colors
+
+// - Header colors
+$color-header-background: $color-white;
+$color-header-text: $color-white;
+
+//$color-header-button-text-default: $color-header-text;
+//$color-header-button-text-hover: $color-orange-darker;
+//$color-header-button-text-active: $color-orange-regular;
+//$color-header-button-text-focus: $color-header-text;
+//$color-header-button-text-visited: $color-header-text;
+//
+//$color-header-button-background-default: $color-header-background;
+//$color-header-button-background-hover: $color-header-text;
+//$color-header-button-background-active: $color-header-text;
+//$color-header-button-background-focus: $color-header-background;
+//$color-header-button-background-visited: $color-header-background;
+
+// - Footer colors
+$color-footer-background: $color-grey-light;
+$color-footer-text: $color-black;
+
+// - Link colors
+$color-link-default: $color-theme-blue;
+$color-link-hover: $color-theme-aqua;
+$color-link-active: $color-theme-aqua;
+$color-link-focus: $color-theme-green;
+$color-link-visited: $color-theme-green;
+
+// - Button colors
+$color-button-text-default: $color-white;
+$color-button-text-hover: $color-button-text-default;
+$color-button-text-active: $color-button-text-default;
+$color-button-text-focus: $color-button-text-default;
+$color-button-text-visited: $color-button-text-default;
+
+$color-button-background-default: $color-theme-blue;
+$color-button-background-hover: $color-theme-aqua;
+$color-button-background-active: $color-button-background-default;
+$color-button-background-focus: $color-button-background-default;
+$color-button-background-visited: $color-button-background-default;
+
+$color-button-border: $color-button-background-default;

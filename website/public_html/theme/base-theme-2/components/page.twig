@@ -1,0 +1,7 @@
+{% if record.contenttype.name == "Vacatures" %}
+    {% include "/vacancy.twig" %}
+{% endif %}
+
+{% for group in record.contentblocks %}
+    {% include "/blocks/" ~ group.block ~ '.twig' %}
+{% endfor %}

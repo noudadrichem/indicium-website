@@ -1,0 +1,197 @@
+{#
+ # Passed in variables:
+ #   formname        — The form name
+ #   form            — The form object
+ #   fields          — Field data
+ #   result
+ #     email         — True when the form has been submitted successfully
+ #     contenttype   — True when saving of ContentType was successful
+ #     uploads       — True when file uploads were a success
+ #   html_pre        — HTML to display before successful submission
+ #   html_post       — HTML to display after successful submission
+ #   messages        — Arrays of messages by type
+ #     info          — "Informational" messages
+ #     error         — "Error" messages
+ #     debug         — "Debug" messages
+ #   webpath         — URI for the default web assets
+ #   recaptcha       — reCaptcha values
+ #     enabled
+ #     label
+ #     error_message
+ #     error_codes
+ #     valid
+ #   templates       — Array of templates configured for this form
+ #   debug           — True if debug mode is enabled
+ #}
+
+{% form_theme form templates.formtheme %}
+
+{#{% block boltforms_css %}#}
+{#    {{ include(templates.css) }}#}
+{#{% endblock boltforms_css %}#}
+
+{% block boltforms_form %}
+
+        {{ include(templates.messages) }}
+        {% import templates.recaptcha as spambot %}
+
+        {% if result.pass('email') %}
+            {# If the form is successfully submitted, this block will be displayed #}
+            {{ html_post }}
+        {% else %}
+            {{ html_pre }}
+
+            {{ form_start(form, form_start_param) }}
+
+            {{ form_errors(form) }}
+
+            {% block boltforms_form_fields %}
+                <div class="d-none">
+                {% for key, value in fields  %}
+                    {% if value.config.type.name != 'submit' %}
+                        <div class="row">
+                            <span class="col-xs-12 col-sm-4 col-md-4 col-lg-3">{{ form_label(form[key]) }}</span>
+                            <span class="col-xs-12 col-sm-8 col-md-5 col-lg-7 form-group">{{ form_widget(form[key], {"attr": {"class": "form-control w-100"}}) }}</span>
+                            <span class="col-xs-12 col-sm-12 col-md-3 col-lg-2">{{ form_errors(form[key]) }}</span>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+
+                {{ spambot.recaptcha(recaptcha) }}
+
+                <br>
+                {% for key, value in fields  %}
+                    {% if value.config.type.name == 'submit' %}
+                        <div class="boltforms-row{% if form[key].vars.attr.class is defined %} boltforms-{{ form[key].vars.attr.class }}-row{% endif %}">
+                            {% if recaptcha.type == 'invisible' and recaptcha.enabled %}
+                                {{ form_widget(
+                                form[key],
+                                {
+                                    attr:
+                                    {
+                                        'class': form[key].vars.attr.class ~ ' g-recaptcha-button btn btn-theme',
+                                        'data-sitekey': recaptcha.public_key,
+                                        'data-size': 'invisible',
+                                        'data-badge': recaptcha.badge_location
+                                    }
+                                }
+                                ) }}
+                            {% else %}
+                                {{ form_widget(form[key], {attr: {"class": "btn btn-theme"}}) }}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endblock boltforms_form_fields %}
+
+            {# This is the CSRF token row and must be included if using CSRF (default) #}
+            {% if form._token is defined %}
+                {{ form_row(form._token) }}
+            {% endif %}
+
+            {{ form_end(form, { 'render_rest': false }) }}
+
+        {% endif %}
+{% endblock boltforms_form %}
+
+
+{#<div>#}
+    {#<textarea name="json" class="json">Hallo</textarea>#}
+    {#<button type="submit" class="submit">Verzenden</button>#}
+{#</div>#}
+
+{## Passed in variables:#}
+{##   formname        — The form name#}
+{##   form            — The form object#}
+{##   fields          — Field data#}
+{##   result#}
+{##     email         — True when the form has been submitted successfully#}
+{##     contenttype   — True when saving of ContentType was successful#}
+{##     uploads       — True when file uploads were a success#}
+{##   html_pre        — HTML to display before successful submission#}
+{##   html_post       — HTML to display after successful submission#}
+{##   messages        — Arrays of messages by type#}
+{##     info          — "Informational" messages#}
+{##     error         — "Error" messages#}
+{##     debug         — "Debug" messages#}
+{##   webpath         — URI for the default web assets#}
+{##   recaptcha       — reCaptcha values#}
+{##     enabled#}
+{##     label#}
+{##     error_message#}
+{##     error_codes#}
+{##     valid#}
+{##   templates       — Array of templates configured for this form#}
+{##   debug           — True if debug mode is enabled#}
+
+{#{% form_theme form templates.formtheme %}#}
+
+{#{% block boltforms_css %}#}
+    {#{{ include(templates.css) }}#}
+{#{% endblock boltforms_css %}#}
+
+ {#{% block boltforms_form %}#}
+     {#<div class="container">#}
+
+         {#{{ include(templates.messages) }}#}
+         {#{% import templates.recaptcha as spambot %}#}
+
+         {#{% if result.pass('email') %}#}
+             {#If the form is successfully submitted, this block will be displayed#}
+             {#{{ html_post }}#}
+         {#{% else %}#}
+             {#{{ html_pre }}#}
+
+             {#{{ form_start(form, form_start_param) }}#}
+
+             {#{{ form_errors(form) }}#}
+
+             {#{% block boltforms_form_fields %}#}
+                 {#{% for key, value in fields %}#}
+                     {#{% if value.config.type.name != 'submit' %}#}
+                         {#<div class="row">#}
+                             {#<span class="col-xs-12 col-sm-4 col-md-4 col-lg-3">{{ form_label(form[key]) }}</span>#}
+                             {#<span class="col-xs-12 col-sm-8 col-md-5 col-lg-7 form-group">{{ form_widget(form[key], {"attr": {"class": "form-control w-100"}}) }}</span>#}
+                             {#<span class="col-xs-12 col-sm-12 col-md-3 col-lg-2">{{ form_errors(form[key]) }}</span>#}
+                         {#</div>#}
+                     {#{% endif %}#}
+                 {#{% endfor %}#}
+
+                 {#{{ spambot.recaptcha(recaptcha) }}#}
+
+                 {#<br>#}
+                 {#{% for key, value in fields %}#}
+                     {#{% if value.config.type.name == 'submit' %}#}
+                         {#<div class="boltforms-row{% if form[key].vars.attr.class is defined %} boltforms-{{ form[key].vars.attr.class }}-row{% endif %}">#}
+                             {#{% if recaptcha.type == 'invisible' and recaptcha.enabled %}#}
+                                 {#{{ form_widget(#}
+                                 {#form[key],#}
+                                 {#{#}
+                                     {#attr:#}
+                                     {#{#}
+                                         {#'class': form[key].vars.attr.class ~ ' g-recaptcha-button btn btn-theme',#}
+                                         {#'data-sitekey': recaptcha.public_key,#}
+                                         {#'data-size': 'invisible',#}
+                                         {#'data-badge': recaptcha.badge_location#}
+                                     {#}#}
+                                 {#}#}
+                                 {#) }}#}
+                             {#{% else %}#}
+                                 {#{{ form_widget(form[key], {attr: {"class": "btn btn-theme"}}) }}#}
+                             {#{% endif %}#}
+                         {#</div>#}
+                     {#{% endif %}#}
+                 {#{% endfor %}#}
+             {#{% endblock boltforms_form_fields %}#}
+
+             {#This is the CSRF token row and must be included if using CSRF (default)#}
+             {#{% if form._token is defined %}#}
+                 {#{{ form_row(form._token) }}#}
+             {#{% endif %}#}
+
+             {#{{ form_end(form, { 'render_rest': false }) }}#}
+
+         {#{% endif %}#}
+     {#</div>#}
+ {#{% endblock boltforms_form %}#}

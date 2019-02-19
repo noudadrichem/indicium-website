@@ -1,0 +1,135 @@
+/*
+$button-padding: 15px;
+$margin-standard: 10px;
+$margin-header-hover: 8px;
+$margin-button-hover: 6px; // make 0 for extra button float
+$margin-button-active: 10px;
+$shadow-depth: 3px;
+$shadow-header-hover: $margin-standard - $margin-header-hover + $shadow-depth;
+$shadow-button-hover: $margin-standard - $margin-button-hover + $shadow-depth;
+$shadow-button-active: 0;//$margin-standard - $margin-button-active + $shadow-depth;
+$button-height: calc(#{$header-height} - #{$margin-standard} * 2);
+*/
+/*
+ul.navbar-nav {
+  font-family: $font-standard;
+  background-color: $color-orange-regular;
+  //height: calc(#{$button-height} + #{$margin-standard} * 2 + #{$button-padding} * 2 + #{$shadow-depth});
+  //display: flex;
+  //justify-content: space-around;
+  float: right;
+  transition: 0.1s;
+  max-height: calc(100vh - #{$header-height} - 50px);
+  padding: 0;
+  margin-top: 8px;
+  list-style-type: none;
+  text-align: center;
+  overflow: scroll;
+  position: relative;
+  width: 100%;
+
+  @include media-breakpoint-up(lg) {
+    margin: -8px 0
+    text-align: initial;
+    overflow: initial;
+    height: $header-height;
+    width: initial;
+  }
+
+  li.nav-item {
+    float: right;
+    color: white;
+    display: block;
+    background-color: $color-orange-regular;
+    width: 100px;
+    height: $button-height;
+    line-height:$button-height;
+    vertical-align: baseline;
+    text-align: center;
+    margin: $margin-standard 8px;
+    transition: inherit;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    a {
+      font-size: 24px!important;
+      height: $button-height;
+      line-height:$button-height;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    &.active {
+      background-color: $color-white;
+
+      a {
+        color: $color-orange-regular;
+      }
+    }
+
+    &.nav-item-special {
+      //border: 5px solid $color-orange-lightest;
+      background-color: $color-yellow-regular;
+    }
+
+    a {
+      display: block;
+      height: 100%;
+      width: 100%;
+      text-decoration: none;
+      color: $color-header-button-text-default;
+      padding: 0;
+    }
+
+    @include media-breakpoint-down(md) {
+      box-shadow: $shadow-header-hover $shadow-header-hover 10px #B76900;
+      margin-top: $margin-header-hover;
+      background-color: #FFB24C;
+      width: calc(100% - 16px);
+    }
+  }
+
+  &:hover {
+    li.nav-item {
+      box-shadow: $shadow-header-hover $shadow-header-hover 10px #B76900;
+      margin-top: $margin-header-hover;
+      display: block;
+      transition: 0.1s;
+      background-color: $color-orange-lightest;
+
+      &.active {
+        background-color: $color-white;
+      }
+
+      &.nav-item-special {
+        background-color: $color-yellow-lightest;
+      }
+
+      &:hover {
+        box-shadow: $shadow-button-hover $shadow-button-hover 10px #B76900;
+        margin-top: $margin-button-hover;
+
+        &.active {
+          background-color: $color-white;
+        }
+
+        @include media-breakpoint-down(md) {
+          box-shadow: $shadow-header-hover $shadow-header-hover 10px #B76900;
+          margin-top: $margin-header-hover;
+        }
+        &:active {
+          box-shadow: $shadow-button-active $shadow-button-active #B76900;
+          margin-top: $margin-button-active;
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
+}
+*/

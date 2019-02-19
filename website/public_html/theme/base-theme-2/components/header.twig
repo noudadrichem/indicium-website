@@ -1,0 +1,32 @@
+{% setcontent resource = "resources/latest/1" returnsingle %}
+
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-5 col-lg-3 header-brand">
+                <a href="home">
+                    <img src="{{ thumbnail(resource.headerimage, 450, 300, "r") }}" class="image">
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggler col-7 d-lg-none" data-toggle="collapse" data-target="#collapse"
+                    aria-controls="collapse" aria-expanded="true" aria-label="Toggle navigation">
+                Menu <i class="fa fa-bars"></i>
+            </button>
+
+            <div class="menu-wrapper col-lg-9 d-flex flex-column justify-content-between">
+                <nav class="top-menu d-none d-lg-block">
+                    {{ menu('top', 'components/menus/top.twig') }}
+                </nav>
+
+                <nav class="main-menu  d-none d-lg-block">
+                    {{ menu('main', 'components/menus/main.twig') }}
+                </nav>
+
+                <nav class="mobile-menu collapse d-lg-none" id="collapse">
+                    {{ menu('mobile', 'components/menus/mobile.twig') }}
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

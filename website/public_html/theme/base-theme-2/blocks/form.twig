@@ -1,0 +1,75 @@
+{% setcontent form = "forms" where { 'id': group.formentry } returnsingle %}
+
+{% if form %}
+
+    <div class="container block form form-parent">
+        <div class="row">
+            {% for item in form.formfields %}
+                {% if item.block == "text" %}
+                    <div class="col-12 form-group">
+                        <label for="{{ item.label|replace(' ', '-')|lower }}">{{ item.label }}</label>
+                        <input class="form-part form-control" type="text" data-type="text" name="{{ item.label|replace(' ', '-')|lower }}" id="{{ item.label|replace(' ', '-')|lower }}" {% if item.subtext is defined %}aria-describedby="{{ item.label|replace(' ', '-')|lower }}Help"{% endif %} placeholder="{{ item.placeholder }}" value="{{ item.value }}">
+                        {% if item.subtext is defined %}<small id="{{ item.label|replace(' ', '-')|lower }}Help" class="form-text text-muted">{{ item.subtext }}</small>{% endif %}
+                    </div>
+                {% elseif item.block == "email" %}
+                    <div class="col-12 form-group">
+                        <label for="{{ item.label|replace(' ', '-')|lower }}">{{ item.label }}</label>
+                        <input class="form-part form-control" type="email" data-type="email" name="{{ item.label|replace(' ', '-')|lower }}" id="{{ item.label|replace(' ', '-')|lower }}" {% if item.subtext is defined %}aria-describedby="{{ item.label|replace(' ', '-')|lower }}Help"{% endif %} placeholder="{{ item.placeholder }}" value="{{ item.value }}">
+                        {% if item.subtext is defined %}<small id="{{ item.label|replace(' ', '-')|lower }}Help" class="form-text text-muted">{{ item.subtext }}</small>{% endif %}
+                    </div>
+                {% elseif item.block == "hidden" %}
+                    <div class="col-12 form-group form-item-hidden">
+                        <input class="form-part form-control" type="text" data-type="text" name="{{ item.label|replace(' ', '-')|lower }}" id="{{ item.label|replace(' ', '-')|lower }}" value="{{ item.value }}">
+                    </div>
+                {% elseif item.block == "textarea" %}
+                    <div class="col-12 form-group">
+                        <label for="{{ item.label|replace(' ', '-')|lower }}">{{ item.label }}</label>
+                        <textarea class="form-part form-control" data-type="textarea" name="{{ item.label|replace(' ', '-')|lower }}" id="{{ item.label|replace(' ', '-')|lower }}" {% if item.subtext is defined %}aria-describedby="{{ item.label|replace(' ', '-')|lower }}Help"{% endif %} placeholder="{{ item.placeholder }}">{{ item.value }}</textarea>
+                        {% if item.subtext is defined %}<small id="{{ item.label|replace(' ', '-')|lower }}Help" class="form-text text-muted">{{ item.subtext }}</small>{% endif %}
+                    </div>
+                {% elseif item.block == "check" %}
+                    <div class="col-12 form-check">
+                        <input class="form-part form-check-input" type="checkbox" data-type="check" name="{{ item.label|replace(' ', '-')|lower }}" id="{{ item.label|replace(' ', '-')|lower }}" {% if item.subtext is defined %}aria-describedby="{{ item.label|replace(' ', '-')|lower }}Help"{% endif %} {% if item.default is defined and item.default %}checked{% endif %}>
+                        <label class="form-check-label" for="{{ item.label|replace(' ', '-')|lower }}">{{ item.label }}</label>
+                        {% if item.subtext is defined %}<small id="{{ item.label|replace(' ', '-')|lower }}Help" class="form-text text-muted">{{ item.subtext }}</small>{% endif %}
+                    </div>
+                {% elseif item.block == "radio" %}
+                    <div class="col-12">
+                        <span class="label">{{ item.title }}</span>
+                    </div>
+                    <div class="col-12 form-part radio" role="radiogroup" data-type="radio" name="{{ item.title|replace(' ', '-')|trim|lower }}">
+
+                        {% set buttons = item.buttons|split(';') %}
+
+                        {% for button in buttons %}
+
+                            <div class="form-check">
+
+                                <input class="form-check-input" type="radio" {% if button|replace({' ':''}) == item.default %}checked{% endif %} name="{{ item.title|replace(' ', '-')|trim|lower }}" id="{{ button|trim|lower }}" {% if item.subtext is defined %}aria-describedby="{{ item.title|replace(' ', '-')|lower }}Help"{% endif %} value="{{ button|trim|lower|url_encode }}">&nbsp;
+                                <label class="form-check-label" for="{{ button|trim|lower }}">{{ button }}</label>
+
+                            </div>
+
+                        {% endfor %}
+
+                        {% if item.subtext is defined %}<small id="{{ item.title|replace(' ', '-')|lower }}Help" class="form-text text-muted">{{ item.subtext }}</small>{% endif %}
+
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <div class="col-12">
+
+                {% setcontent thankyoupage = "pages/" ~ form.thankyou %}
+
+                {{ boltforms('genericform',
+                    override = {
+                        feedback: { 'redirect': {
+                            'target': thankyoupage.slug
+                        }
+                    }
+                }) }}
+
+            </div>
+        </div>
+    </div>
+{% endif %}

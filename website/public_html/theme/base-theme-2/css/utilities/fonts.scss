@@ -1,0 +1,89 @@
+$font-primary: 'Mina', sans-serif;
+$font-secondary: 'Source Sans Pro', sans-serif;
+$font-paragraph: 'Arial', sans-serif;
+
+@font-face {
+  font-family: Mina;
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/Mina/Mina-Regular.ttf);
+}
+@font-face {
+  font-family: Mina;
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/Mina/Mina-Bold.ttf);
+}
+
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 200;
+  src: url(../fonts/Source_Sans_Pro/SourceSansPro-ExtraLight.ttf);
+}
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: italic;
+  font-weight: 200;
+  src: url(../fonts/Source_Sans_Pro/SourceSansPro-ExtraLightItalic.ttf);
+}
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 300;
+  src: url(../fonts/Source_Sans_Pro/SourceSansPro-Light.ttf);
+}
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: italic;
+  font-weight: 300;
+  src: url(../fonts/Source_Sans_Pro/SourceSansPro-LightItalic.ttf);
+}
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf);
+}
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: italic;
+  font-weight: 400;
+  src: url(../fonts/Source_Sans_Pro/SourceSansPro-Italic.ttf);
+}
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf);
+}
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: italic;
+  font-weight: 500;
+  src: url(../fonts/Source_Sans_Pro/SourceSansPro-SemiBoldItalic.ttf);
+}
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf);
+}
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: italic;
+  font-weight: 500;
+  src: url(../fonts/Source_Sans_Pro/SourceSansPro-BoldItalic.ttf);
+}
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/Source_Sans_Pro/SourceSansPro-Black.ttf);
+}
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: italic;
+  font-weight: 500;
+  src: url(../fonts/Source_Sans_Pro/SourceSansPro-BlackItalic.ttf);
+}

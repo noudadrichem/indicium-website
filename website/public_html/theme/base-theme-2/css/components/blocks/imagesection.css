@@ -1,0 +1,8 @@
+.imagesection .row .col {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .imagesection .row .col img {
+    max-width: 100%; }
+
+/*# sourceMappingURL=imagesection.css.map */

@@ -1,0 +1,79 @@
+main:
+    -
+        label: Home
+        path: home
+    -
+        label: Activiteiten
+        path: activiteiten
+    -
+        label: Partners
+        path: partners
+    -
+        label: Vacatures
+        path: vacatures
+    -
+        label: Contact
+        path: contact
+
+top:
+    -
+        label: Over Indicium
+        path: over-indicium
+    -
+        label: Statuten
+        path: statuten
+    -
+        label: Uitleenservice
+        path: uitleenservice
+        
+mobile: 
+    -
+        label: Home
+        path: home
+    -
+        label: Activiteiten
+        path: activiteiten
+    -
+        label: Partners
+        path: partners
+    -
+        label: Vacatures
+        path: vacatures
+    -
+        label: Over Indicium
+        path: over-indicium
+    -
+        label: Uitleenservice
+        path: uitleenservice
+    -
+        label: Statuten
+        path: statuten
+    -
+        label: Contact
+        path: contact
+
+footer:
+    -
+        label: Home
+        path: home
+    -
+        label: Activiteiten
+        path: activiteiten
+    -
+        label: Partners
+        path: partners
+    -
+        label: Vacatures
+        path: vacatures
+    -
+        label: Over Indicium
+        path: over-indicium
+    -
+        label: Uitleenservice
+        path: uitleenservice
+    -
+        label: Statuten
+        path: statuten
+    -
+        label: Contact
+        path: contact

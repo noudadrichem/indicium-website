@@ -1,0 +1,33 @@
+main:
+    -
+        label: Home
+        path: home
+        submenu:
+            -
+                label: Themabijeenkomsten
+                path: '\#'
+            -
+                label: Individueel
+                path: '\#'
+    -
+        label: Gezinnen
+        path: '\#'
+    -
+        label: Familieopstellingen
+        path: '\#'
+    -
+        label: 'Over mij'
+        path: '\#'
+    -
+        label: Blog
+        path: '\#'
+        submenu:
+            -
+                label: Tarieven
+                path: '\#'
+    -
+        label: Evenementen
+        path: '\#'
+    -
+        label: Contact
+        path: '\#'

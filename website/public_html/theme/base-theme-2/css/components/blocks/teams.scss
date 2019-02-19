@@ -1,0 +1,19 @@
+.teams {
+  .team {
+    * {
+      text-align: center;
+    }
+
+    .teamname {
+      font-size: 52px;
+      font-family: "OrangeJuice", sans-serif;
+      color: $color-black-darker;
+    }
+    .teamtime {
+      color: $color-grey;
+    }
+    .teamdate {
+      color: $color-grey;
+    }
+  }
+}

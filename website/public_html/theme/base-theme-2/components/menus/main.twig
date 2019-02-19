@@ -1,0 +1,26 @@
+<ul>
+
+    {% for item in menu %}
+
+        <li class="nav-item {% if item|current %}nav-item-active{% endif %} {% if item.class is defined %}{{ item.class }}{% endif %}">
+
+            {% if item.link is defined and item.link is not empty and item.link != "" %} {# create living menu button for clicking #}
+
+                <a href="{{ item.link }}" class="nav-link">
+                    {{item.label}} {% if item|current %}<span class="sr-only">(current)</span>{% endif %}
+                    {% if item.submenu is defined %}<i class="fas fa-caret-down"></i>{% endif %}
+                </a>
+
+            {% else %} {# create dead menu button for display #}
+
+                <span class="nav-link">
+                    {{item.label}} {% if item|current %}<span class="sr-only">(current)</span>{% endif %}
+                </span>
+
+            {% endif %}
+
+        </li>
+
+    {% endfor %}
+
+</ul>

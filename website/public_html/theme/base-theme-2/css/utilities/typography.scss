@@ -1,0 +1,110 @@
+@import "../import.scss";
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: $font-primary!important;
+  text-align: center;
+  color: $color-theme-aqua!important;
+  overflow: hidden;
+  hyphens: auto;
+  margin-bottom: 0;
+  padding-bottom: 8px;
+}
+
+h1, .h1 {
+  font-weight: 600;
+  font-size: 52px;
+}
+
+h2, .h2 {
+  font-weight: 500;
+  font-size: 48px;
+}
+
+h3, .h3 {
+  font-weight: 400;
+  font-size: 42px;
+}
+
+h4, .h4 {
+  font-size: 34px;
+}
+
+h5, .h5 {
+  font-size: 28px;
+}
+
+h6, .h6 {
+  font-size: 24px;
+}
+
+@include media-breakpoint-up(sm) {
+  h1, .h1 {
+    font-size: 96px;
+  }
+
+  h2, .h2 {
+    font-size: 72px;
+    line-height: 90px;
+  }
+
+  h3, .h3 {
+    font-size: 64px;
+    line-height: 80px;
+  }
+
+  h4, .h4 {
+    font-size: 52px;
+    line-height: 66px;
+  }
+
+  h5, .h5 {
+    font-size: 48px;
+    line-height: 62px;
+  }
+
+  h6, .h6 {
+    font-size: 36px;
+    line-height: 45px;
+  }
+}
+
+h4, h5, h6, .h4, .h5, .h6 {
+  font-weight: 300;
+}
+
+p, a, label, .label, blockquote, ul, ol, li, label, input, textarea, select, option, button, span {
+  font-size: 20px!important;
+  font-family: $font-paragraph
+}
+
+a {
+  color: $color-link-default;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-link-hover;
+  }
+  &:active {
+    color: $color-link-active;
+  }
+  &:focus {
+    color: $color-link-focus;
+  }
+  &:visited {
+    //color: $color-link-visited;
+  }
+}
+
+.table {
+  thead {
+    th {
+      border-bottom-color: $color-theme-blue;
+    }
+  }
+}
+
+.jumbotron {
+  .lead {
+    font-size: 28px!important;
+  }
+}

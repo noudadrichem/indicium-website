@@ -1,0 +1,5 @@
+<link rel="stylesheet" href="{{ paths.theme }}css/components/blocks/jumboimage.css">
+
+<div class="block jumboimage" style="background-image: url('{{ thumbnail(group.image, 1920, 1080, "r") }}');{% if group.height != 0 %} height: {{ group.height }}vh;{% endif %}">
+    <img src="{{ thumbnail(group.image, 1920, 1080, "r") }}">
+</div>

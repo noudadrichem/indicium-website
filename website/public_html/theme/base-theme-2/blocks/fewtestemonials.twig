@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="{{ paths.theme }}css/components/blocks/fewtestemonials.css">
+
+{% set number = group.number|replace({'\\': ""}) %}
+
+{% if number == 1 or number is empty %}
+    {% set number = 3 %}
+{% endif %}
+
+{% setcontent blog = "testemonials/random/#{number}" %}
+
+<div class="container block few-testemonials">
+    <div class="row">
+        {% if group.title is defined and group.title != "" and group.title is not empty %}
+            <div class="col-12 few-testemonial-title">
+                <h2>{{ group.title }}</h2>
+            </div>
+        {% endif %}
+        {% for testemonial in blog %}
+            <div class="col-xs-12 col-sm single-testemonial">
+                <div class="single-testemonial-image">
+                    <img src="{{ thumbnail(testemonial.image, 150, 150, "r") }}">
+                </div>
+                <div class="single-testemonial-title">
+                    {{ testemonial.title }}
+                </div>
+                <div class="single-testemonial-preview">
+                    <p>
+                        {{ testemonial.comment }}
+                    </p>
+                </div>
+                <div class="single-testemonial-date">
+                    {{ testemonial.datecreated|date("d/m/Y") }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

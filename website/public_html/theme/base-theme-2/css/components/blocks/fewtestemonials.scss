@@ -1,0 +1,30 @@
+@import "../../import.scss";
+
+.few-testemonials {
+  .row {
+    .few-testemonials-title {
+      h2 {
+        font-size: 28px;
+      }
+    }
+
+    .single-testemonial {
+      .single-testemonial-image {
+        text-align: center;
+        margin-bottom: 15px;
+
+        img {
+          border-radius: 75px;
+        }
+      }
+
+      .single-testemonial-title {
+        font-weight: bold;
+      }
+
+      .single-testemonial-date {
+        color: $color-grey;
+      }
+    }
+  }
+}

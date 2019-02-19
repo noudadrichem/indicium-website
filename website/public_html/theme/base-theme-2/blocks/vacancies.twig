@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="{{ paths.theme }}css/components/blocks/vacancies.css">
+
+{% setcontent vacancies = "vacancies/latest/10" allowpaging %}
+
+<div class="container block vacancies">
+    <div class="row">
+        {% for vacancy in vacancies %}
+            <h1 class="col-12">{{ group.title }}</h1>
+
+            {% setcontent partner = "partners" where { 'id': vacancy.partner } returnsingle %}
+
+            <div class="col-3 vacancy-image">
+                <img src="{{ thumbnail(partner.logo, 200, 200, "r") }}">
+            </div>
+            <div class="col-9 vacancy">
+                <h2 class="vacancy-title">{{ vacancy.title }} - {{ partner.name }}</h2>
+                <p class="vacancy-description">{{ vacancy.shortdescription }}</p>
+                <div class="vacancy-date">
+                    Beschikbaar vanaf {{ vacancy.date|date("d/m/Y") }}
+                </div>
+                <a href="vacature/{{ vacancy.slug }}" class="btn btn-theme vacature">Bekijk de vacature hier!</a>
+            </div>
+        {% endfor %}
+        <div class="col-12">
+            {{ pager("vacancies") }}
+        </div>
+    </div>
+</div>

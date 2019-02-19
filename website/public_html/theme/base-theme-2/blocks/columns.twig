@@ -1,0 +1,26 @@
+{#<link rel="stylesheet" href="{{ paths.theme }}css/components/blocks/columns.css">#}
+
+<div class="container block section">
+    <div class="row">
+        {% if group.column1 is not empty and group.column1 != "" %}
+            <div class="col-xs-12 col-md">
+                {{ group.column1|raw }}
+            </div>
+        {% endif %}
+        {% if group.column2 is not empty and group.column2 != "" %}
+            <div class="col-xs-12 col-md">
+                {{ group.column2|raw }}
+            </div>
+        {% endif %}
+        {% if group.column3 is not empty and group.column3 != "" %}
+            <div class="col-xs-12 col-md">
+                {{ group.column3|raw }}
+            </div>
+        {% endif %}
+        {% if group.column4 is not empty and group.column4 != "" %}
+            <div class="col-xs-12 col-md">
+                {{ group.column4|raw }}
+            </div>
+        {% endif %}
+    </div>
+</div>

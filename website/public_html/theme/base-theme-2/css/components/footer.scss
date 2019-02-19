@@ -1,0 +1,178 @@
+@import "../import.scss";
+
+footer {
+  background-color: $color-black;
+  color: $color-grey;
+
+  p, a, blockquote, ul, ol, li, label, input, textarea, select, option, button, span {
+    font-size: 16px!important;
+  }
+
+  a {
+    //color: $color-orange-darkest;
+  }
+
+  .main-footer {
+    .container {
+      padding-top: 16px;
+      padding-bottom: 16px;
+
+      .row {
+        .footer-col {
+          margin-bottom: 15px;
+          text-align: center;
+          overflow-x: scroll;
+
+          @include media-breakpoint-up(sm) {
+            border-right: 1px solid $color-grey;
+          }
+
+          .footer-menu {
+            ul {
+              padding: 0;
+              margin: 0;
+
+              li.nav-item {
+                list-style-type: none;
+                text-align: center;
+
+                &.nav-item-active {
+                  .nav-link, .sub-link {
+                    a {
+                      background-color: $color-black;
+                    }
+                  }
+                }
+
+                .nav-link, .sub-link {
+                  display: block;
+                  padding: 0;
+                  font-size: 16px!important;
+                  background-color: $color-black;
+                  color: $color-white;
+                  line-height: 40px;
+                  transition: $transition-medium;
+
+                  &:hover {
+                    background-color: $color-grey-dark;
+                  }
+                }
+
+                .nav-link {
+                  font-weight: bold;
+                }
+
+                .sub-link {
+                  line-height: 25px;
+                }
+              }
+            }
+          }
+
+          .fb-page {
+            margin: 0 auto;
+            display: inline;
+
+            max-width: 100%;
+          }
+
+          .footer-img {
+            width: 100%;
+            max-width: 300px;
+            max-height: 300px;
+          }
+
+          .footer-social {
+            display: block;
+            width: 100%;
+            border-radius: 5px;
+            height: 64px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+
+            &.facebook {
+              color: rgba(255, 255, 255, 1);
+              background-color: rgba(59, 89, 152, 1);
+
+              &:hover {
+                background-color: rgb(52, 74, 130);
+              }
+            }
+            &.twitter {
+              color: rgba(255, 255, 255, 1);
+              background-color: rgba(0, 172, 237, 1);
+
+              &:hover {
+                background-color: rgb(0, 132, 180);
+              }
+            }
+            &.linkedin {
+              color: rgba(255, 255, 255, 1);
+              background-color: rgba(0, 123, 181, 1);
+
+              &:hover {
+                background-color: rgb(0, 101, 155);
+              }
+            }
+            &.instagram {
+              color: rgba(255, 255, 255, 1);
+              background: radial-gradient(150px at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);;
+
+              &:hover {
+                background: radial-gradient(150px at 30% 107%, #e9e084 0%, #e9e087 5%, #e95244 45%, #c22091 60%, #285AEB 90%);;
+              }
+            }
+            &.pinterest {
+              color: rgba(255, 255, 255, 1);
+              background-color: rgba(255, 0, 0, 1);
+
+              &:hover {
+                background-color: rgb(235, 0, 0);
+              }
+            }
+            &.youtube {
+              color: rgba(255, 255, 255, 1);
+              background-color: rgba(203, 32, 39, 1);
+
+              &:hover {
+                background-color: rgb(183, 31, 36);
+              }
+            }
+
+            .social-icon {
+              width: 64px;
+              height: 64px;
+              padding: 15px;
+              border-right: 1px solid rgba(40, 40, 40, 0.2);
+              display: block;
+              float: left;
+            }
+
+            .social-text {
+              font-size: 28px!important;
+              height: 64px;
+              padding: 10px;
+              display: block;
+              float: left;
+              margin: auto 0;
+            }
+          }
+
+          &:last-child {
+            border-right: initial;
+          }
+        }
+      }
+    }
+  }
+
+  .sub-footer {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: $color-black-darker;
+
+    a {
+      color: $color-white-broken;
+    }
+  }
+}
